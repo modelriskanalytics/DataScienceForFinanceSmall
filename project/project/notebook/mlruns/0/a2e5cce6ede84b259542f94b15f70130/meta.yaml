@@ -1,0 +1,14 @@
+artifact_uri: /home/qsandbox7/fall_2018_aj/mlflow/project/notebook/mlruns/0/a2e5cce6ede84b259542f94b15f70130/artifacts
+end_time: 1540823675851
+entry_point_name: ''
+experiment_id: 0
+lifecycle_stage: active
+name: ''
+run_uuid: a2e5cce6ede84b259542f94b15f70130
+source_name: /home/qsandbox7/anaconda3/envs/mlflow/lib/python3.6/site-packages/ipykernel_launcher.py
+source_type: 4
+source_version: ''
+start_time: 1540589459782
+status: 3
+tags: []
+user_id: qsandbox7

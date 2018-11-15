@@ -1,0 +1,11 @@
+artifact_path: model
+flavors:
+  python_function:
+    data: model.pkl
+    loader_module: mlflow.sklearn
+    python_version: 3.6.7
+  sklearn:
+    pickled_model: model.pkl
+    sklearn_version: 0.20.0
+run_id: a2e5cce6ede84b259542f94b15f70130
+utc_time_created: '2018-10-26 21:29:41.346131'

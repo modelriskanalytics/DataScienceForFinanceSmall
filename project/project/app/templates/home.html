@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interest Rate predictor</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <style type="text/css">
+    #header{
+        background-color: #435966;
+        width:100vw;
+        height:50px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        color: white;
+    }
+    #footer{
+        clear:both;
+        height: 50px;
+        width: 100vw;
+        text-align: center;
+        background-color: lightgreen;
+        display: table;
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    #main{
+        display: block;
+    }
+</style>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div style="float:left">
+                <img src="/static/logo.PNG"/>
+            </div>
+            <div>
+                <h1>Interest Rate Predictor</h1>
+            </div>
+        </div>
+        <div>
+            <form action = "/predict" method = "POST" class="pure-form pure-form-aligned">
+                <fieldset>
+
+                    <div class="pure-control-group">
+                        <p> <label> Loan Amount </label><input type = "text" class="pure-input-rounded" name = "loan_amnt" placeholder="Upto $350000" /></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Repayment term </label><select name= term method="GET" action="/">
+                            {% for t in term %}
+                            <option value= "{{t}}" SELECTED>{{t}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Installment </label><input type = "text" class="pure-input-rounded" name = "installment" placeholder="Upto $1300"/></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Grade </label> <select name= grade method="GET" action="/">
+                            {% for g in grade %}
+                            <option value= "{{g}}" SELECTED>{{g}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Sub grade </label> <select name= sub_grade method="GET" action="/">
+                            {% for sg in sub_grade %}
+                            <option value= "{{sg}}" SELECTED>{{sg}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Employment length </label> <select name= emp_length method="GET" action="/">
+                            {% for el in emp_length %}
+                            <option value= "{{el}}" SELECTED>{{el}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Home </label> <select name= home_ownership method="GET" action="/">
+                            {% for ho in home_ownership %}
+                            <option value= "{{ho}}" SELECTED>{{ho}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Annual Income </label><input type = "text" class="pure-input-rounded" name = "annual_inc" /></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Verification </label> <select name= verification_status method="GET" action="/">
+                            {% for vs in verification_status %}
+                            <option value= "{{vs}}" SELECTED>{{vs}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Purpose </label> <select name= purpose method="GET" action="/">
+                            {% for p in purpose %}
+                            <option value= "{{p}}" SELECTED>{{p}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> State </label> <select name= addr_state method="GET" action="/">
+                            {% for as in addr_state %}
+                            <option value= "{{as}}" SELECTED>{{as}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> DTI </label><input type = "text" class="pure-input-rounded" name = "dti" placeholder="Upto 30"/></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Past due incidences </label><input type = "text" class="pure-input-rounded" name = "delinq_2yrs" placeholder="Under 10"/></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> Inquiries in past 6 months </label><input type = "text" class="pure-input-rounded" name = "inq_last_6mths" placeholder="Upto 10" /></p>
+                    </div>
+<!-- 
+                    <div class="pure-control-group">
+                        <p> <label> Loan status </label><input type = "text" class="pure-input-rounded" name = "loan_status_Binary" placeholder="1 or 0"/></p>
+                    </div> -->
+
+                    <div class="pure-control-group">
+                        <p> <label> Prev Loan Status </label> <select name= loan_status_Binary method="GET" action="/">
+                            {% for s in status %}
+                            <option value= "{{loop.index-1}}" SELECTED>{{s}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <p> <label> <b>Algorithm</b> </label> <select name= algo method="GET" action="/">
+                            {% for al in algo %}
+                            <option value= "{{al}}" SELECTED>{{al}}</option>"
+                            {% endfor %}
+                        </select></p>
+                    </div>
+
+                    <div class="pure-controls">
+                        <button type = "submit" class="pure-button pure-button-primary" value = "submit"> Submit </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div id="footer"> &copy; QuantUniversity 2018</div>
+</body>
+</html>
